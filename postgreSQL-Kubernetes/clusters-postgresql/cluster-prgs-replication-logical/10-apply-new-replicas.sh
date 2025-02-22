@@ -17,7 +17,6 @@ function check_pod_running(){
 kubectl apply -f cluster-prgs-k8s-new-replicas.yaml
 check_pod_running
 
-kubectl apply -f cluster-prgs-k8s-rw.yaml
 kubectl apply -f cluster-prgs-k8s-ro.yaml
 
 yellow=$'\e[33;01m'

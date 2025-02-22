@@ -18,4 +18,4 @@ kubectl apply -f cluster-prgs-k8s.yaml
 check_pod_running
 
 kubectl apply -f cluster-prgs-k8s-rw.yaml
-#kubectl apply -f cluster-prgs-k8s-ro.yaml 
+
