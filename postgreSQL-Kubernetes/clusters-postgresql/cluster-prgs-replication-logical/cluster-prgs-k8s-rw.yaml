@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  namespace: prgs
+data:
+  5432: prgs/prgs-k8s-rw:5432
+
+---  
+apiVersion: v1
+kind: Service
+metadata:
+  name: prgs-k8s-external-rw
+  namespace: prgs
+  labels:
+    postgresql: prgs-k8s
+spec:
+  type: LoadBalancer
+  ports:
+    - name: postgres
+      port: 5000
+      targetPort: 5432
+      protocol: TCP
+  selector:
+    cnpg.io/cluster: prgs-k8s
+    cnpg.io/instanceRole: primary  
