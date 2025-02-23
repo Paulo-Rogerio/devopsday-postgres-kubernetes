@@ -36,14 +36,5 @@ spec:
     highAvailability:
       enabled: true
     updateInterval: 300
-  bootstrap:
-    initdb:
-      import:
-        type: monolith
-        schemaOnly: true
-        databases: 
-          - prgs-docker
-        roles:
-          - prgs-docker
   superuserSecret:
     name: prgs-k8s-superuser      
