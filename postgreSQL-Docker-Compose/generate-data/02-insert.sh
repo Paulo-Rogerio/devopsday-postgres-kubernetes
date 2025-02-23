@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export PGPASSWORD=postgres
 
 psql -h localhost -U postgres -d "prgs-docker" -c "select count(*) from person;"

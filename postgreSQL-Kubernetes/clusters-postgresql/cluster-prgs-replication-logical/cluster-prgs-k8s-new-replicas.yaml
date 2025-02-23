@@ -45,7 +45,5 @@ spec:
           - prgs-docker
         roles:
           - prgs-docker
-        source:
-          externalCluster: docker
   superuserSecret:
     name: prgs-k8s-superuser      

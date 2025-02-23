@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 kubectl get secrets -n prgs
 echo "-------"
 echo "Username: $(kubectl get secret prgs-k8s-superuser -n prgs -oyaml -o=jsonpath={.data.username} | base64 -d | xargs)"

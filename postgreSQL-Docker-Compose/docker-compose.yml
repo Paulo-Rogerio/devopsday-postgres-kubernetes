@@ -30,6 +30,7 @@ services:
       -c max_wal_senders=10 
       -c max_replication_slots=10 
       -c hot_standby_feedback=on
+      -c wal_writer_delay=200ms
 
 networks:
   postgresql:

@@ -22,3 +22,5 @@ kubectl apply -f cluster-prgs-k8s-ro.yaml
 yellow=$'\e[33;01m'
 reset=$'\e[0m'
 echo "${yellow} Isso demora 5 min para ficar Health...${reset}"
+
+kubectl get pods -n prgs

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "============= Services RW ( ClusterIP ) ================="
 kubectl describe service prgs-k8s-rw -n prgs
 echo

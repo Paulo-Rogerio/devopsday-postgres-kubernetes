@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 kubectl cnpg publication create prgs-k8s -n prgs \
   --external-cluster docker \
   --publication docker \
