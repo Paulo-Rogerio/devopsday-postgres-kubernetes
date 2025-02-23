@@ -10,7 +10,7 @@ read -p "Start End  : " range_end
 psql \
   -p 5000 \
   -h ${ipLoadbalancer} \
-  -U postgres \
+  -U "prgs-docker-app" \
   -d "prgs-docker" \
   -v range_start=${range_start} \
   -v range_end=${range_end} <<EOF

@@ -2,12 +2,16 @@
 
 export PGPASSWORD=postgres
 
-psql -h localhost -U postgres -d "prgs-docker" -c "select count(*) from person;"
+psql -h localhost -U "prgs-docker-app" -d "prgs-docker" -c "select count(*) from person;"
 
 read -p "Start Range: " range_start
 read -p "Start End  : " range_end
 
-psql -h localhost -U postgres -d "prgs-docker" -v range_start=${range_start} -v range_end=${range_end} <<EOF
+psql \
+  -h localhost \
+  -U "prgs-docker-app" \
+  -d "prgs-docker" \
+  -v range_start=${range_start} -v range_end=${range_end} <<EOF
 INSERT INTO person (
  first_name,
  last_name,

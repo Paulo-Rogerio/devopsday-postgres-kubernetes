@@ -7,7 +7,6 @@ ipLoadbalancer=$(kubectl get svc/prgs-k8s-external-rw -n prgs -o=jsonpath='{.sta
 psql \
   -p 5000 \
   -h ${ipLoadbalancer} \
-  -U postgres \
+  -U "prgs-docker-app" \
   -d "prgs-docker" \
   -c "select setval('person_id_seq', (select MAX(id) FROM person));"
-

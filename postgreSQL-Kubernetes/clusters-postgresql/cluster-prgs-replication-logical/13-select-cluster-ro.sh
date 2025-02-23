@@ -4,12 +4,14 @@ export PGPASSWORD=$(kubectl get secret prgs-k8s-superuser -n prgs -o jsonpath="{
 ipLoadbalancer=$(kubectl get svc/prgs-k8s-external-ro -n prgs -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
 echo "===================== List Tables ========================="
-psql -p 5002 -U postgres -h ${ipLoadbalancer} -d "prgs-docker" -c "\dt"
+psql -p 5002 -U "prgs-docker-app" -h ${ipLoadbalancer} -d "prgs-docker" -c "\dt"
 echo
 echo
 echo "===================== Select Person ======================="
-psql -p 5002 -U postgres -h ${ipLoadbalancer} -d "prgs-docker" -c "select * from person;"
+psql -p 5002 -U "prgs-docker-app" -h ${ipLoadbalancer} -d "prgs-docker" -c "select * from person;"
 echo
 echo
 echo "===================== Select Person ======================="
-psql -p 5002 -U postgres -h ${ipLoadbalancer} -d "prgs-docker" -c "select pg_is_in_recovery();"
+psql -p 5002 -U "prgs-docker-app" -h ${ipLoadbalancer} -d "prgs-docker" -c "select pg_is_in_recovery();"
+
+

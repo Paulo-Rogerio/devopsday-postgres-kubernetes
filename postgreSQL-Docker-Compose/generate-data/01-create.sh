@@ -2,10 +2,29 @@
 
 export PGPASSWORD=postgres
 psql -h localhost -U postgres -d postgres <<EOF
-CREATE DATABASE "prgs-docker";
+CREATE ROLE "prgs-docker-app" LOGIN PASSWORD 'postgres';
+CREATE DATABASE "prgs-docker" OWNER "prgs-docker-app";
 EOF
 
 psql -h localhost -U postgres -d "prgs-docker" <<EOF
+BEGIN;
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+REVOKE CREATE ON DATABASE "prgs-docker" FROM PUBLIC;
+GRANT CREATE ON SCHEMA public TO "prgs-docker-app";
+ALTER DEFAULT PRIVILEGES GRANT SELECT ON TABLES TO "prgs-docker-app";
+ALTER DEFAULT PRIVILEGES GRANT SELECT ON SEQUENCES TO "prgs-docker-app";
+ALTER DEFAULT PRIVILEGES GRANT SELECT,INSERT,UPDATE,DELETE ON TABLES TO "prgs-docker-app";
+ALTER DEFAULT PRIVILEGES GRANT USAGE, SELECT ON SEQUENCES TO "prgs-docker-app";
+ALTER DEFAULT PRIVILEGES GRANT EXECUTE ON FUNCTIONS TO "prgs-docker-app";
+ALTER DEFAULT PRIVILEGES GRANT USAGE ON SCHEMAS TO "prgs-docker-app";
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO "prgs-docker-app";
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO "prgs-docker-app";
+GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA public TO "prgs-docker-app";
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO "prgs-docker-app";
+COMMIT;
+EOF
+
+psql -h localhost -U "prgs-docker-app" -d "prgs-docker" <<EOF
 CREATE TABLE person (
     id SERIAL PRIMARY KEY,
     first_name TEXT NOT NULL,

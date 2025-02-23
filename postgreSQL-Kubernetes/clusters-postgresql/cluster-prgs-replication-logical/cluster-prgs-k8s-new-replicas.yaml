@@ -27,14 +27,13 @@ spec:
     size: 1Gi
   managed:
     roles:
-    - name: prgs-docker
+    - name: prgs-docker-app
       ensure: present
-      comment: User prgs-docker
+      comment: User prgs-docker-app
       login: true
-      superuser: true
   replicationSlots:
     highAvailability:
       enabled: true
     updateInterval: 300
   superuserSecret:
-    name: prgs-k8s-superuser      
+    name: prgs-k8s-superuser 
