@@ -30,7 +30,6 @@ EOF
 
 until [[ $(sqlVerifyLSNDocker) == $(sqlVerifyLSNK8s) ]]
 do
-    echo "=======================================" 
     echo "${red} Cluster Desincronizados ${reset}"
     sleep 2
 done

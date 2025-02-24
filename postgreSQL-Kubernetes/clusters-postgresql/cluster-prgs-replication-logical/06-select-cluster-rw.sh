@@ -15,4 +15,3 @@ echo
 echo
 echo "===================== Select Person ======================="
 psql -p 5000 -U "prgs-docker-app" -h ${ipLoadbalancer} -d "prgs-docker" -c "select pg_is_in_recovery();"
-
