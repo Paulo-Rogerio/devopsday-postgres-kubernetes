@@ -1,1 +1,1 @@
-brew list kubectl-cnpg
+kubectl get pods -A

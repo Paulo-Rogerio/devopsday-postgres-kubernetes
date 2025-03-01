@@ -19,7 +19,7 @@ export clusterName
 
 colima_running=$(jq -r .status <<< $(colima list -j))
 
-[[ ${colima_running} == "Stopped" ]] && colima start --vm-type=vz --network-address --cpu 2 --memory 2 --disk 40
+[[ ${colima_running} == "Stopped" || -z ${colima_running} ]] && colima start --vm-type=vz --network-address --cpu 2 --memory 2 --disk 40
 
 colima ssh -- bash -c "sudo -h 127.0.0.1 -i cat >> /tmp/sysctl.conf <<EOF
 fs.inotify.max_user_watches = 1048576

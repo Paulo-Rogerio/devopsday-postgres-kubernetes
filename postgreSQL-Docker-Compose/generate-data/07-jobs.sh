@@ -18,7 +18,7 @@ EOF
 # Database APP ( Autenticando com Usuário da App )
 while ${working}
 do
-    [[ ${count} -eq 300 ]] && export working=false 
+    [[ ${count} -eq 200 ]] && export working=false 
     psql \
         -h localhost \
         -U "prgs-docker-app" \
