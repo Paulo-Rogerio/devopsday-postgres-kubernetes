@@ -51,7 +51,7 @@ spec:
   externalClusters:
   - name: docker
     connectionParameters:
-      host: 192.168.100.3 
+      host: 172.20.10.4 
       user: postgres
       dbname: prgs-docker
     password:
